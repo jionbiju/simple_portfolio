@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h2>Days Lived Calculator</h2>
+            <p>Enter your date of birth</p>
+        </div>
+        <input type="date" class="dob_ip" id="dob_ip">
+        <button class="btn" onclick="calculateDate()" >Calculate</button>
+        <div class="result" id="res">
+            
+        </div>
+    </div>
+    <script>
+        function calculateDate () {
+            const dob = document.getElementById('dob_ip').value;
+            console.log(dob);
+            if(!dob){
+                document.getElementById('res').innerText="Please select a date.";
+                return
+            }
+            const dobobj = new Date(dob);
+            const today = new Date();
+            console.log(today);
+            const dateDiff = Math.abs(today-dobobj);
+            console.log(dateDiff);
+            const dayDiff = Math.ceil(dateDiff/(1000 * 60 * 60 * 24));
+            console.log(dayDiff); 
+            document.getElementById('res').innerText=`You have lived ${dayDiff} days`;
+
+            return;
+        }
+    </script>
+</body>
+</html>
